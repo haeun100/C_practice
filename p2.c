@@ -1,18 +1,23 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-int main() {
-	int x1, y1, x2, y2;
-	int x3, y3, x4, y4;
-
-	printf("사각형1의 좌표 입력: ");
-	scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
-	printf("사각형2의 좌표 입력: ");
-	scanf("%d%d%d%d", &x3, &y3, &x4, &y4);
-
-	if (x3 < x2)
-		printf("겹친다.");
+int IsLeapYear(int year) {
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+		return 1;
 	else
-		printf("겹치지 않는다.");
+		return 0;
+}
 
+int GetNumDaysInYear(int year) {
+	if (IsLeapYear(year))
+		return 366;
+	else
+		return 365;
+}
+
+int main() {
+	int year;
+	printf("연도를 입력하세요: ");
+	scanf_s("%d", &year);
+
+	printf("%d년에는 %d일이 있습니다.\n", year, GetNumDaysInYear(year));
 	return 0;
 }
